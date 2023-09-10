@@ -1,26 +1,37 @@
+#include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <stdio.h>
 
 /**
- * main - is the main function
- * Description: Assigning a random number to a variable n when it is executed
+ * main - this is  the main function
  * Return: Always return 0
+ *
  */
 
 int main(void)
 {
 int n;
+int last_digit;
 
 srand(time(0));
-n = rand() - RAND_MAX / 2;
-digit = n % 10;
+n = rand();
 
-if (digit > 5)
-printf("digit of %i is %i and is greater than 5\n", n, digit);
-else if (digit == 0)
-printf("digit of %i is %i and is 0\n", n, digit);
-else if (digit < 0 && digit != 0)
-printf("digit of %i is %i and is less than 6 and not 0\n", n, digit);
+last_digit = n % 10;
+
+printf("Last digit of %d is %d ", n, last_digit);
+
+if (last_digit > 5)
+{
+printf("and is greater than 5\n");
+}
+else if (last_digit == 0)
+{
+printf("and is 0\n");
+}
+else
+{
+printf("and is less than 6 and not 0\n");
+}
+
 return (0);
 }
