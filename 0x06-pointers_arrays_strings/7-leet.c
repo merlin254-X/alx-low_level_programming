@@ -2,9 +2,13 @@
 
 
 /**
- * leet -  takes a pointer to a character
- * @str: input string
- * Return: str
+ * leet - Encodes a string into 1337 speak.
+ * @str: A pointer to the input string to be encoded.
+ *
+ * Return: A pointer to the modified string.
+ *
+ *
+ *
  *
  *
  */
