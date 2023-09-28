@@ -1,34 +1,23 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * factorial - function that returns the
- * factorial of a given number.
- * @n: imput function
- * Return: -1 if n < 0 or 1 if n == 0
- *
- *
+ * factorial - Computes the factorial of a number using recursion.
+ * @n: The number for which to compute the factorial.
+ * Return: The factorial of n, or -1 if n is negative.
  */
-
 int factorial(int n)
 {
-int i = 1;
-int result = i;
-
 if (n < 0)
 {
 return (-1);
 }
-else if (n == 0)
+else if (n == 0 || n == 1)
 {
 return (1);
 }
 else
 {
-for (i = 1; i <= n; ++i)
-{
-result *= i;
-}
-return (result);
+return (n * factorial(n - 1));
 }
 }
+
