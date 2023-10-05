@@ -8,14 +8,15 @@
  * Return: pointer to the allocated memory
  *
  */
+
 void *malloc_checked(unsigned int b)
 {
-	void *p = malloc(b);
+	void *ptr = malloc(b);
 
-	if (p == NULL)
+	if (ptr == NULL)
 	{
-		printf("Error: malloc failed\n");
 		exit(98);
 	}
-	return (p);
+
+	return (ptr);
 }
