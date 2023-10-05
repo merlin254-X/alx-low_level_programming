@@ -30,7 +30,7 @@ int is_positive_number(char *s)
 int main(int argc, char *argv[])
 {
 	unsigned long num1, num2, result;
-	
+
 	if (argc != 3 || !is_positive_number(argv[1]) || !is_positive_number(argv[2]))
 	{
 		printf("Error\n");
