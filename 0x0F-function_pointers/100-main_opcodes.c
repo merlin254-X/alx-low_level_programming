@@ -1,35 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * main - Entry point of the program.
- * @argc: The number of command-line arguments.
- * @argv: An array containing the command-line arguments as strings.
+ * print_opcodes - print the opcodes in this program
+ * @a: address of the main function
+ * @n: number of bytes to print
+ * Return: void
  *
- * Description: This function prints the opcodes of its
- * own main function.
- * It takes a single argument, the number of bytes to print
- * Return: nothing
+ *
  */
-int main(int argc, char *argv[])
+
+void print_opcodes(char *a, int n)
 {
-	int i;
-	char *opcodes = (char *)main;
-	int num_of_bytes = atoi(argv[1]);
+		int i;
 
-	if (argc != 2)
-	{
-		printf("Error\n");
-		exit(1);
-	}
+		for (i = 0; i < n; i++)
+		{
+			printf("%.2hhx", a[i]);
+			if (i < n - 1)
+			{
+				printf(" ");
+			}
+		}
+		printf("\n");
+}
 
-	if (num_of_bytes < 0)
-	{
-		printf("Error\n");
-		exit(2);
-	}
+/**
+ * main - print the opcodes of its own main function
+ * @argc: number of arguments passed to a function
+ * @argv: arrays of pointers to argument
+ * Return: Always 0
+ */
+int main(int argc, char **argv)
+{
+		int n;
 
-	for (i = 0; i < num_of_bytes; i++)
-		printf("%02hhx ", opcodes[i]);
+		if (argc != 2)
+		{
+			printf("Error\n");
+			exit(2);
+		}
 
-	printf("\n");
+		n = atoi(argv[1]);
+		if (n < 0)
+		{
+				printf("Error\n");
+				exit(2);
+		}
+		print_opcodes((char *)&main, n);
+				return (0);
+
+
 }
