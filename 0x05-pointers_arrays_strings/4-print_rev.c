@@ -14,7 +14,11 @@
 void print_rev(char *s)
 {
 	if (*s == '\0')
+	{
+		putchar('\n');
 		return;
+	}
 	print_rev(s + 1);
 	putchar(*s);
+	
 }
