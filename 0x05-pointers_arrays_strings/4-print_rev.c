@@ -10,15 +10,24 @@
  *
  */
 
-
 void print_rev(char *s)
 {
-	if (*s == '\0')
-	{
-		putchar('\n');
+	int length = 0;
+	int i;
+
+	if (s == NULL)
 		return;
+
+	length = 0;
+
+	while (s[length] != '\0')
+	{
+		length++;
 	}
-	print_rev(s + 1);
-	putchar(*s);
-	
+
+	for (i = length - 1; i >= 0; i--)
+	{
+		putchar(s[i]);
+	}
+	putchar('\n');
 }
