@@ -1,18 +1,20 @@
 section .data
-    hello db 'Hello, Holberton', 10, 0
+    hello db "Hello, Holberton", 10, 0
 
 section .text
     global main
-    extern printf
+
+extern printf
 
 main:
     push rbp
-    mov rbp, rsp
-
-    lea rdi, [hello]
-    xor eax, eax
+    mov rdi, hello
     call printf
 
-    mov rsp, rbp
+    add rsp, 8  ; Adjust the stack after the call
     pop rbp
-    ret
+
+    mov rax, 60         ; syscall: exit
+    xor rdi, rdi        ; status: 0
+    syscall
+
