@@ -1,5 +1,5 @@
 section .data
-    hello db "Hello, Holberton", 10, 0
+    hello db 'Hello, Holberton', 10, 0
 
 section .text
     global main
@@ -16,4 +16,3 @@ main:
     mov rsp, rbp
     pop rbp
     ret
-
