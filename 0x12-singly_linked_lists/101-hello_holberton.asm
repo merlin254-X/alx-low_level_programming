@@ -1,5 +1,5 @@
 section .data
-    hello db "Hello, Holberton", 10, 0
+    format db "Hello, Holberton", 10, 0
 
 section .text
     global main
@@ -8,7 +8,8 @@ section .text
 
 main:
     push rbp
-    mov rdi, hello
+    mov rdi, format
+
     call printf
     add rsp, 8      ; Adjust the stack after the call
     pop rbp
@@ -16,3 +17,4 @@ main:
     mov rax, 60         ; syscall: exit
     xor rdi, rdi        ; status: 0
     syscall
+
