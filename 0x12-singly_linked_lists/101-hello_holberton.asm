@@ -4,17 +4,15 @@ section .data
 section .text
     global main
 
-extern printf
+    extern printf
 
 main:
     push rbp
     mov rdi, hello
     call printf
-
-    add rsp, 8  ; Adjust the stack after the call
+    add rsp, 8      ; Adjust the stack after the call
     pop rbp
 
     mov rax, 60         ; syscall: exit
     xor rdi, rdi        ; status: 0
     syscall
-
