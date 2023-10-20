@@ -1,20 +1,20 @@
 section .data
-    format db "Hello, Holberton", 10, 0
+    msg db "Hello, Holberton\n", 0
 
 section .text
     global main
-
-    extern printf
-
 main:
-    push rbp
-    mov rdi, format
+    ; Set up the arguments for the printf function.
+    mov rax, 1 ; system call number for printf
+    mov rdi, 1 ; file handle for stdout
+    mov rsi, msg ; address of the message to print
+    mov rdx, 17 ; length of the message
 
-    call printf
-    add rsp, 8      ; Adjust the stack after the call
-    pop rbp
+    ; Call the printf function.
+    syscall
 
-    mov rax, 60         ; syscall: exit
-    xor rdi, rdi        ; status: 0
+    ; Exit the program.
+    mov rax, 60 ; system call number for exit
+    xor rdi, rdi ; exit code
     syscall
 
