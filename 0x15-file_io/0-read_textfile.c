@@ -7,28 +7,48 @@
  *
  * Return: actual number of letters it could read and print
  */
+
+
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t n_read, n_written;
+	int file_descriptor;
 	char *buffer;
-	FILE *fp;
+	ssize_t bytes_read, bytes_written;
 
-	if (!filename)
+	if (filename == NULL)
+	{
 		return (0);
+	}
+	file_descriptor = open(filename, O_RDONLY);
 
-	fp = fopen(filename, "r");
-	if (!fp)
+	if (file_descriptor == -1)
+	{
 		return (0);
-
+	}
 	buffer = malloc(sizeof(char) * letters);
-	if (!buffer)
+
+	if (buffer == NULL)
+	{
+		close(file_descriptor);
 		return (0);
+	}
+	bytes_read = read(file_descriptor, buffer, letters);
 
-	n_read = fread(buffer, sizeof(char), letters, fp);
-	n_written = fwrite(buffer, sizeof(char), n_read, stdout);
+	if (bytes_read == -1)
+	{
+		close(file_descriptor);
+		free(buffer);
+		return (0);
+	}
+	bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
 
+	if (bytes_written == -1 || bytes_written != bytes_read)
+	{
+		close(file_descriptor);
+		free(buffer);
+		return (0);
+	}
+	close(file_descriptor);
 	free(buffer);
-	fclose(fp);
-
-	return (n_written);
+	return (bytes_read);
 }
